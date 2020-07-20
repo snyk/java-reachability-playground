@@ -1,8 +1,8 @@
-# Java Reachable Goof
+# Java Reachability Playground
 
 This is an intentionally vulnerable application. It should easily demonstrate purpose of feature called Reachable Vulnerabilities 
-by having very straight flow to vulnerable function. To demonstrate "Potentially Reachable" mark, one more vulnerability
-without data about vulnerable function is added.
+by having very straight flow to vulnerable function. To demonstrate "Potentially Reachable" flag, one more vulnerability
+without data about vulnerable function is included.
 
 ## What is vulnerable
 ### [Arbitrary File Write via Archive Extraction](https://app.snyk.io/vuln/SNYK-JAVA-ORGND4J-72550)
