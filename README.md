@@ -1,7 +1,7 @@
 # Java Reachable Goof
 
-This is an intentionally vulnerable application. It should easily demonstrate purpose of feature called Reachability 
-Vulns by having very straight flow to vulnerable function. To demonstrate "Reachable by package", one more vulnerability
+This is an intentionally vulnerable application. It should easily demonstrate purpose of feature called Reachable Vulnerabilities 
+by having very straight flow to vulnerable function. To demonstrate "Potentially Reachable" mark, one more vulnerability
 without data about vulnerable function is added.
 
 ## What is vulnerable
@@ -21,7 +21,8 @@ are not available.
 2. Install all the dependencies (`mvn install`)
 3. Compile the project (`mvn compile`)
 4. Run the main class (`mvn exec:java -Dexec.mainClass=Unzipper`); application should throw an exception saying `Malicious file /tmp/evil.txt was created`.
-5. Run snyk test command with Reachable Vulnerabilities feature (`snyk test --reachable-vulns`); you should see vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
+5. Run snyk command with Reachable Vulnerabilities feature (`snyk test --reachable-vulns` or `snyk monitor --reachable-vulns`); you should see vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
+and the function call path to the vulnerability
 
 ---
 
