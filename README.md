@@ -1,32 +1,32 @@
 # Java Reachability Playground
 
-This is an intentionally vulnerable application. It should easily demonstrate purpose of feature called Reachable Vulnerabilities 
-by having very straight flow to vulnerable function. To demonstrate "Potentially Reachable" flag, one more vulnerability
-without data about vulnerable function is included.
+This is an intentionally vulnerable application. It was purposely designed to demonstrate the capabilities of Snyk's Reachable
+Vulnerabilities feature and includes both a "Reachable" vulnerability (with a direct data flow to the vulnerable function) and a "Potentially Reachable" vulnerability (where only partial data exists for determining reachability).
 
-## What is vulnerable
+
+## Included vulnerabilities
 ### [Arbitrary File Write via Archive Extraction](https://app.snyk.io/vuln/SNYK-JAVA-ORGND4J-72550)
-Exploit is using vulnerability called [ZipSlip](https://snyk.io/research/zip-slip-vulnerability), which was discovered 
-at Snyk. It is a critical vulnerability, which typically results in remote command execution. Special zip archive is 
-crafted (attached as `malicious_file.zip`). When this file is extracted by vulnerable function, it will created file 
+An exploit is using a vulnerability called [ZipSlip](https://snyk.io/research/zip-slip-vulnerability) - a critical vulnerability discovered 
+by Snyk, which typically results in remote command execution. As part of the exploit, a special zip archive is 
+crafted (attached as `malicious_file.zip`). When this file is extracted by a vulnerable function, it will create a file 
 called `good.txt` in the folder `unzipped`, but it will also create a file called `evil.txt` in the `/tmp/` folder. 
-This example is not dangerous, but imagine overwriting `.ssh/authorized_keys` or another sensitive file.
+This example is not dangerous, of course, but demonstrates the risk the vulnerability poses - imagine overwriting `.ssh/authorized_keys` or another sensitive file.
 
 ### [Deserialization of Untrusted Data](https://app.snyk.io/vuln/SNYK-JAVA-COMMONSCOLLECTIONS-472711)
 This vulnerability is not exploited. It demonstrates potentially vulnerable code, for which data about vulnerable functions
-are not available.
+is not available.
 
-## How to run
+## How to run the demo
 1. Checkout this repository (`git checkout git@github.com:snyk/java-reachable-goof.git`)
 2. Install all the dependencies (`mvn install`)
 3. Compile the project (`mvn compile`)
-4. Run the main class (`mvn exec:java -Dexec.mainClass=Unzipper`); application should throw an exception saying `Malicious file /tmp/evil.txt was created`.
-5. Run snyk command with Reachable Vulnerabilities feature (`snyk test --reachable-vulns` or `snyk monitor --reachable-vulns`); you should see vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
+4. Run the main class (`mvn exec:java -Dexec.mainClass=Unzipper`); the application should throw an exception saying `Malicious file /tmp/evil.txt was created`.
+5. Run snyk command with Reachable Vulnerabilities flag (`snyk test --reachable-vulns` or `snyk monitor --reachable-vulns`); you should see the vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
 and the function call path to the vulnerability
 
 ---
 
-*Note: Once java application is run, `malicious_file.zip` will be deleted by it. To run it again, run `git checkout .` prior
+*Note: Once the java application is run, `malicious_file.zip` will be deleted by it. To run it again, run `git checkout .` prior
 to next java run.*
 
 ## Screenshots
