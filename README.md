@@ -17,11 +17,11 @@ This vulnerability is not exploited. It demonstrates potentially vulnerable code
 is not available.
 
 ## How to run the demo
-1. Checkout this repository (`git checkout git@github.com:snyk/java-reachable-goof.git`)
+1. Checkout this repository (`git checkout git@github.com:snyk/java-reachability-playground.git`)
 2. Install all the dependencies (`mvn install`)
 3. Compile the project (`mvn compile`)
 4. Run the main class (`mvn exec:java -Dexec.mainClass=Unzipper`); the application should throw an exception saying `Malicious file /tmp/evil.txt was created`.
-5. Run snyk command with Reachable Vulnerabilities flag (`snyk test --reachable-vulns` or `snyk monitor --reachable-vulns`); you should see the vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
+5. Run snyk command with Reachable Vulnerabilities flag (`snyk test --reachable` or `snyk monitor --reachable`); you should see the vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
 and the function call path to the vulnerability
 
 ---
@@ -36,4 +36,3 @@ to next java run.*
 
 ### Snyk UI
 ![Snyk UI Reachable Vulnerabilities](UI_reachable.png)
-
