@@ -16,7 +16,7 @@ This example is not dangerous, of course, but demonstrates the risk the vulnerab
 This vulnerability is not exploited. It demonstrates potentially vulnerable code, for which data about vulnerable functions
 is not available.
 
-## How to run the demo
+## How to run the demo (Maven)
 1. Checkout this repository (`git checkout git@github.com:snyk/java-reachability-playground.git`)
 2. Install all the dependencies (`mvn install`)
 3. Compile the project (`mvn compile`)
@@ -24,6 +24,9 @@ is not available.
 5. Run snyk command with Reachable Vulnerabilities flag (`snyk test --reachable` or `snyk monitor --reachable`); you should see the vulnerability `SNYK-JAVA-ORGND4J-72550` marked as reachable
 and the function call path to the vulnerability
 
+## For Gradle 
+1. Make sure you build the artifacts with `./gradlew build`
+2. To see test results run `snyk test --file=build.gradle --reachable` or monitor: `snyk monitor --file=build.gradle --reachable`
 ---
 
 *Note: Once the java application is run, `malicious_file.zip` will be deleted by it. To run it again, run `git checkout .` prior
