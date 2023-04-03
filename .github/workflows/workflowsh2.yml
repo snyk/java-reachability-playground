@@ -1,4 +1,4 @@
-name: Example workflow for Docker using Snyk 
+name: Github-Act-CLI
 on: push
 jobs:
   security:
