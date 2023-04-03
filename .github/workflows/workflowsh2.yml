@@ -1,5 +1,9 @@
 name: Github-Act-CLI
-on: push
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
   security:
     runs-on: ubuntu-latest
