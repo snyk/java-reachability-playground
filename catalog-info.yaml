@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata: java-reachability-playground
+  name: 
+spec:
+  type: intentionally-vulnerable
+  lifecycle: unused-field
+  owner: os-managed
