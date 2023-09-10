@@ -34,7 +34,7 @@ to next java run.*
 
 ## Screenshots
 
-### CLI
+### CLI & GUI
 ![Snyk CLI Reachable Vulnerabilities](CLI_reachable.png)
 
 ### Snyk UI
