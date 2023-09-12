@@ -4,5 +4,5 @@ metadata:
   name: java-reachability-playground
 spec:
   type: intentionally-vulnerable
-  lifecycle: unused-field
+  lifecycle: "-"
   owner: os-managed
