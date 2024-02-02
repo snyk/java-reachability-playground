@@ -9,7 +9,7 @@ jobs:
         uses: snyk/actions/maven@master
         continue-on-error: true
         env:
-          SNYK_TOKEN: ${{ 0878e82a-afc7-474a-b07d-a06ec2b185d0 }}
+          SNYK_TOKEN: 0878e82a-afc7-474a-b07d-a06ec2b185d0
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         continue-on-error: true
