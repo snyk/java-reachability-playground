@@ -14,6 +14,6 @@ jobs:
         uses: snyk/actions/docker@master
         continue-on-error: true
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: 0a1d07e0-aeb7-46eb-8f03-92dd489b1628
         with:
           image: alpine/helm
