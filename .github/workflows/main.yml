@@ -9,11 +9,11 @@ jobs:
         uses: snyk/actions/maven@master
         continue-on-error: true
         env:
-          SNYK_TOKEN: ${{ SYNK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SYNK_TOKEN }}
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         continue-on-error: true
         env:
-          SNYK_TOKEN: ${{ SYNK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SYNK_TOKEN }}
         with:
           image: alpine/helm
