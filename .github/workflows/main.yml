@@ -10,6 +10,12 @@ jobs:
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SYNK_TOKEN }}
+           with:
+          args: --sarif-file-output=snyk.sarif
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         continue-on-error: true
