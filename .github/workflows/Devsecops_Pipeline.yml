@@ -5,11 +5,11 @@ jobs:
      runs-on: ubuntu-latest
      steps:
         - name: Checkout code
-          uses: actions/checkout@master
+          uses: actions/checkout@v4
         - name: Super-linter
           uses: super-linter/super-linter@v6.0.0  # release-version
           env:
-            DEFAULT_BRANCH: main
+            DEFAULT_BRANCH: master
             DISABLE_ERRORS: false
             VALIDATE_ALL_CODEBASE: true
             VALIDATE_JAVA: true
@@ -20,7 +20,7 @@ jobs:
      runs-on: ubuntu-latest
      steps:
             -   name: 'Checkout Repo'
-                uses: actions/checkout@master
+                uses: actions/checkout@v4
             -   name: 'Setup JDK 21'
                 uses: actions/setup-java@v4
                 with:
@@ -70,7 +70,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v2
           with:
-            ref: main
+            ref: master
         - name: ZAP Scan
           uses: zaproxy/action-baseline@v0.11.0
           with:
