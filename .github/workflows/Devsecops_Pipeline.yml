@@ -29,6 +29,10 @@ jobs:
                  server-id: github
                  settings-path: ${{github.workspace}} #Location for seting.xml file
                  cache: maven
+            -    name: Set up Maven
+                 uses: stCarolas/setup-maven@v4.5
+                 with:
+                      maven-version: 3.8.2
                 #Sonar Cloud : Detects bugs, vulnerabilities and code smells  (Continuous Code Quality & Code Security)
             -   name: Build with Maven
                 run: | 
