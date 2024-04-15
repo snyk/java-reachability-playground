@@ -1,6 +1,7 @@
 name: Example workflow for Maven using Snyk
 on: push
 jobs:
+  env: SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   security:
     runs-on: ubuntu-latest
     steps:
@@ -9,5 +10,3 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
