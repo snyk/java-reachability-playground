@@ -1,9 +1,10 @@
 name: Example workflow for Maven using Snyk
 on: push
 jobs:
-  env: SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   security:
     runs-on: ubuntu-latest
+    env: 
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
       - uses: actions/checkout@master
       - name: Authenticate with Snyk
