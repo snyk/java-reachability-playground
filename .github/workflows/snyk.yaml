@@ -7,7 +7,5 @@ jobs:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
       - uses: actions/checkout@master
-      - name: Authenticate with Snyk
-        run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
