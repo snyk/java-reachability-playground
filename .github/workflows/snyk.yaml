@@ -3,6 +3,7 @@ on: push
 jobs:
   security:
     runs-on: ubuntu-latest
+    environment: Security-Scan
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
