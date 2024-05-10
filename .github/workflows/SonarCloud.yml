@@ -14,8 +14,10 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: maven
-    - name: Build with Maven cloud
-      run:  mvn -B verify sonar:sonar -Dsonar.projectKey=javacicdproject -Dsonar.organization=javaCICDproject -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN
+    - name: Build and analyze
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn verify sonar:sonar \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.organization=<javacicdproject> \
+          -Dsonar.projectKey=<javaCICDproject>
