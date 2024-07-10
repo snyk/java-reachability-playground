@@ -19,17 +19,13 @@ jobs:
         fetch-depth: 0
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
-    - name: Analyze with SonarCloud
-      uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
-      with:
-        projectBaseDir: my-custom-directory
-        args: >
-          -Dsonar.organization=my-organization
-          -Dsonar.projectKey=my-projectkey
-          -Dsonar.python.coverage.reportPaths=coverage.xml
-          -Dsonar.sources=lib/
-          -Dsonar.test.exclusions=tests/**
-          -Dsonar.tests=tests/
-          -Dsonar.verbose=true
+    # - name: Analyze with SonarCloud
+    #   uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
+    #   with:
+    #     projectBaseDir: my-custom-directory
+    #     args: >
+    #       -Dsonar.organization=cacara-cicd
+    #       -Dsonar.projectKey=cacara-cicd_java-reachability-playground
+    #       -Dsonar.verbose=true
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
