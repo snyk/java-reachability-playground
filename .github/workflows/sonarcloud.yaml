@@ -1,31 +1,59 @@
-name: Workflow for SAST Scan 
+# name: Workflow for SAST Scan 
 
-on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request.
-  push:
-    branches:
-      - master
-  pull_request:
-      types: [opened, synchronize, reopened]
+# on:
+#   # Trigger analysis when pushing in master or pull requests, and when creating
+#   # a pull request.
+#   push:
+#     branches:
+#       - master
+#   pull_request:
+#       types: [opened, synchronize, reopened]
       
+# jobs:
+#   sonarcloud:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         # Disabling shallow clone is recommended for improving relevancy of reporting
+#         fetch-depth: 0
+#     - name: SonarCloud Scan
+#       uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
+#     - name: Analyze with SonarCloud
+#       uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
+#       with:
+#         projectBaseDir: my-custom-directory
+#         args: >
+#           -Dsonar.organization=cacara-cicd
+#           -Dsonar.projectKey=cacara-cicd_java-reachability-playground
+#           -Dsonar.verbose=true
+#       env:
+#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+name: SonarCloud SAST Scan 
+on: 
+  push: 
+
 jobs:
   sonarcloud:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
-    # - name: Analyze with SonarCloud
-    #   uses: sonarsource/sonarcloud-github-action@v2.3.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
-    #   with:
-    #     projectBaseDir: my-custom-directory
-    #     args: >
-    #       -Dsonar.organization=cacara-cicd
-    #       -Dsonar.projectKey=cacara-cicd_java-reachability-playground
-    #       -Dsonar.verbose=true
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - uses: actions/checkout@v4
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11' 
+          distribution: 'temurin'
+          server-id: github # Value of the distributionManagement/repository/id field of the pom-xml 
+          settings-path: ${{ github.workspace }} # location for the settings.ml file 
+          cache: maven
+      - name: Build with Maven 
+        run: |
+          mvn verify sonar:sonar \
+          -Dsonar-projectKey=cacara-cicd_java-reachability-playground \
+          -Dsonar.organization=cacara-cicd \
+          -Dsonar.host.url=https://sonarcloud.io  
+        env: 
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            
+        
