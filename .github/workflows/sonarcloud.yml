@@ -12,7 +12,7 @@ jobs:
           distribution: 'tumerin'
           cache: maven  
       - name: Build with Maven Cloud
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=javaprojectreachability101 -Dsonar.organisation=javaprojectreachability -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKENS
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=javaprojectreachability101 -Dsonar.organisation=javaprojectreachability -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
